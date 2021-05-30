@@ -17,7 +17,7 @@ module.exports = {
         let modelSchema = new mongoose.Schema({
             name: String,
             questionCounter: {type: Number, default: 0}, 
-            questionAnsweres: Boolean
+            questionAnsweres: [] 
         });
         
         return  mongoose.model('user', modelSchema); 

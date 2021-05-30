@@ -1,8 +1,10 @@
+let model_quiz = require('../model/model_quiz'); 
+
 module.exports = {
     answereQuestion: (req, res)=>{
-        console.log(req.body);
-        let answere = JSON.stringify(req.body);
+        let name = req.cookies.name;
+        let answere = req.body.answere;
 
-        res.send(answere);
+        model_quiz.setDecision(name, answere);    
     }
 };

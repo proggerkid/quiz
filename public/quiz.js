@@ -7,13 +7,21 @@ btn_false.addEventListener('click', sendDecision);
 
 function sendDecision(e){
     let xhr = new XMLHttpRequest();
-    let tmp = {"name": "test"};
-    tmp = JSON.stringify(tmp);
+    let decision;
     
+    if(e.target.id == "btn_true"){
+        decision = true; 
+    }
+    else{
+        decision = false;
+    }
+    
+    let answere = JSON.stringify({answere: decision});
+
     xhr.open('post', '/quizCreation');
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.onload = ()=>{
         console.log(xhr.response);
     };
-    xhr.send(tmp);
+    xhr.send(answere);
 }

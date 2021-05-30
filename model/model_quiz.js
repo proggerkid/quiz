@@ -20,5 +20,15 @@ module.exports = {
         });
         
         user.save();
+    },
+    setDecision: (name, answere)=>{
+        User.findOne({name: name}, (err, user)=>{
+            if(err){}
+            else{
+                user.questionCounter++;
+                user.questionAnsweres.push(answere);
+                user.save();
+            }
+        })
     }
 };
