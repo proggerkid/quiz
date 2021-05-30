@@ -13,8 +13,7 @@ module.exports = {
         });
     },
     addUser: (name)=>{
-        let User = db.User; 
-        let user = User({
+        let user = new User({
             name: name,
             questionCounter: 0,
         });
@@ -22,13 +21,18 @@ module.exports = {
         user.save();
     },
     setDecision: (name, answere)=>{
+      return new Promise((resolve, reject)=>{
         User.findOne({name: name}, (err, user)=>{
-            if(err){}
-            else{
-                user.questionCounter++;
-                user.questionAnsweres.push(answere);
-                user.save();
-            }
+          if(err){
+            reject("fail");
+          }
+          else{
+            user.questionCounter++;
+            user.questionAnsweres.push(answere);
+            user.save();
+            resolve("success");
+          }
         })
+      });
     }
 };
