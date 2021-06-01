@@ -13,8 +13,14 @@ module.exports = {
             let question = {
               question: currQuestion 
             };
-            
-            res.send(question);
+           
+            if(result >= 4){
+              res.set("Content-Type", "text/html");
+              res.render('index');
+            }
+            else{
+              res.send(question);
+            }
           })
         })    
     }

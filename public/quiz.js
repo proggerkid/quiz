@@ -21,9 +21,16 @@ function sendDecision(e){
     xhr.open('post', '/quizCreation');
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.onload = ()=>{
-      let currQuestion = JSON.parse(xhr.responseText);
       
-      question.innerHTML = currQuestion.question;
+      let contentType = xhr.getResponseHeader("Content-Type");
+      if(contentType.startsWith("text/html")){
+          document.write(xhr.responseText);
+      }
+      else{
+         let currQuestion = JSON.parse(xhr.responseText);
+         question.innerHTML = currQuestion.question;
+      }
     };
-    xhr.send(answere);
+    
+  xhr.send(answere);
 }
