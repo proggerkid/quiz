@@ -34,5 +34,26 @@ module.exports = {
           }
         })
       });
+    },
+    getAnsweres: (name)=>{
+        return new Promise((resolve, reject)=>{
+            User.findOne({name: name}, (err, user)=>{
+                if(err){
+                }
+                else{
+                    resolve(user.questionAnsweres);            
+                }
+            })
+        });
+    },
+    getID: (name)=>{
+        return new Promise((resolve, reject)=>{
+            User.findOne({name: name}, (err, user)=>{
+                if(err){}
+                else{
+                    resolve(user._id);
+                }
+            })
+        });
     }
 };

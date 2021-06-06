@@ -16,8 +16,10 @@ module.exports = {
     makeModel: ()=>{
         let modelSchema = new mongoose.Schema({
             name: String,
+            id: String,
             questionCounter: {type: Number, default: 0}, 
-            questionAnsweres: [] 
+            questionAnsweres: [], 
+            foreignAnsweres: [] 
         });
         
         return  mongoose.model('user', modelSchema); 

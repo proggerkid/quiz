@@ -8,6 +8,16 @@
         <h1>Quiz</h1>
             <a href='/registration'>Start</a>
         </h1>
+        <ul>
+            <% for(i in answeres){ %>
+                <li>
+                    <%= answeres[i] %>
+                </li>        
+            <% } %>
+        </ul> 
+        <h2>
+            <a href='<%= url %>'> adress </a>
+        </h2>
      </body>
 </html>
 

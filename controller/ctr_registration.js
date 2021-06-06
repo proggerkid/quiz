@@ -12,9 +12,25 @@ module.exports = {
             model_quiz.returnQuestionNumber(name).then((result)=>{
                 let questionNumber = result;
                 
-                res.render('quizCreation', {
-                    question: questions[questionNumber]
-                });
+                if(questionNumber >= 4){
+                    model_quiz.getAnsweres(name).then((result)=>{
+                        let questionAnsweres = result; 
+                        
+                        model_quiz.getID(name).then((result)=>{
+                            let id = result;
+
+                            res.render('index', {
+                                answeres: questionAnsweres,
+                                url: '/guess' + '/' + result  
+                            }) 
+                        })
+                    });
+                }
+                else{
+                    res.render('quizCreation', {
+                        question: questions[questionNumber]
+                    });
+                }
             });
         }
     },
