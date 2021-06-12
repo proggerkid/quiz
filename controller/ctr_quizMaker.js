@@ -13,15 +13,22 @@ module.exports = {
             let question = {
               question: currQuestion 
             };
-           
-            if(result >= 4){
-              res.set("Content-Type", "text/html");
-              res.render('index');
-            }
-            else{
-              res.send(question);
-            }
-          })
+            
+            model_quiz.getID(name).then((result)=>{
+               let userID = result;
+
+                if(result >= 4){
+                  res.set("Content-Type", "text/html");
+                  res.render('index', {
+                      userID: userID,
+                      answeres: [] 
+                  });
+                }
+                else{
+                  res.send(question);
+                }
+            })
         })    
-    }
+    })
+  }
 };

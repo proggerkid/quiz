@@ -1,5 +1,8 @@
 module.exports = {
     renderIndex: (req, res)=>{
-        res.render('index', {answeres: []});
+        res.render('index', {
+            answeres: [],
+            userID: ""
+        });
     }
 }
