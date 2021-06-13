@@ -1,5 +1,7 @@
 module.exports = {
     guessAnsweres: (req, res)=>{
-        res.render('guess');
+        let quizID = req.query.id;
+                    
+        res.render('guess')
     }
 };
