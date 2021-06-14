@@ -55,5 +55,13 @@ module.exports = {
                 }
             })
         });
+    },
+    guessAnswere: (name, userID, answere)=>{
+        return new Promise((resolve, reject)=>{
+            User.findOne({_id: userID}, (err, user)=>{
+                if(err){
+                }
+            })
+        })
     }
 };

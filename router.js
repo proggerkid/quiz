@@ -10,4 +10,5 @@ router.get('/', ctr_index.renderIndex);
 router.get('/registration', ctr_registration.renderRegistration);
 router.post('/registration', ctr_registration.registrateUser);
 router.post('/quizCreation', ctr_quizMaker.answereQuestion);
-router.get('/guess', ctr_guess.guessAnsweres);
+router.get('/guess', ctr_guess.renderGuess);
+router.post('/guess', ctr_guess.guessAnsweres);

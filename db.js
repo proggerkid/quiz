@@ -19,7 +19,7 @@ module.exports = {
             id: String,
             questionCounter: {type: Number, default: 0}, 
             questionAnsweres: [], 
-            foreignAnsweres: [] 
+            guessAnsweres: Object 
         });
         
         return  mongoose.model('user', modelSchema); 
