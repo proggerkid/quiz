@@ -56,10 +56,35 @@ module.exports = {
             })
         });
     },
-    guessAnswere: (name, userID, answere)=>{
+    guessAnswere: (name, userID, answerer)=>{
         return new Promise((resolve, reject)=>{
             User.findOne({_id: userID}, (err, user)=>{
                 if(err){
+                }
+                else{
+                    if(!user.guessQuestionCounter.hasOwnProperty(name)){
+                        user.guessQuestionCounter.name = 0
+                    }
+                    else{
+                        user.guessQuestionCounter.name += 1
+                    }
+                     user.guessAnsweres.append({
+                        name: answere, 
+                        questionNumber: user.guessQuestionCounter.name 
+                    })
+                    user.save()
+                    resolve(user)
+                }
+            })
+        })
+    },
+    returnGuessQuestionCounter: (name, UserID)=>{
+        return new Promise((resolve, reject)=>{
+            user.findOne({_id: UserID}, (err, user)=>{
+                if(err){
+                }
+                else{
+                    resolve(user.guessQuestionCounter.name)
                 }
             })
         })
